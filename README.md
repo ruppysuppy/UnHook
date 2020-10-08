@@ -1,6 +1,6 @@
 # Un-Hook
 
-<div style="text-align:center">
+<div align="center">
     <img src="./assets/img/logo-black.png" style="width: 200px" />
 </div>
 
