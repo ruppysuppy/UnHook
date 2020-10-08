@@ -1,0 +1,25 @@
+{
+  "name": "unhook",
+  "version": "1.0.0",
+  "description": "If you are one of the rare breed of people who call themselves programmers, you must have faced the following sitation: You were so busy working, that you forgot to take a break while coding... now your eyes hurt due to the excessive stress on them. The solution? Use Un-Hook. An app that reminds you to take breaks at the right time.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec npm run start",
+    "start-front-end": "cd front-end && npm run start"
+  },
+  "keywords": [
+    "electron",
+    "react",
+    "desktop-app",
+    "cross-platform-app",
+    "productivity"
+  ],
+  "author": "Tapajyoti Bose",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^10.1.3",
+    "electron-packager": "^15.1.0",
+    "nodemon": "^2.0.4"
+  }
+}
