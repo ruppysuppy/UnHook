@@ -17,3 +17,9 @@ The solution? Use Un-Hook. An app that reminds you to take breaks at the right t
 3. Go to front-end folder using `cd front-end` and use `npm install` to install front end realted dependencies.
 4. Use `npm run start-front-end` to start the react app
 5. Use `npm run dev` to start the electron app
+
+## Tools/Frameworks Used
+
+1. Electron
+2. React
+3. Redux (This is an overkill for such a small app, but I need to practice using redux + electron)

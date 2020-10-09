@@ -2,22 +2,36 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import * as actions from '../../../store/actions/actions'
-
 import timeTypes from '../../../store/constants/timeTypes'
 
+import Button from '../../Button/Button'
+
+import styles from './timer-dial.module.css'
+
 function TimerDial({ timeType, time, increment, decrement, upperLimit, lowerLimit, boostAmt, addSlice, subtractSlice }) {
-    console.log(upperLimit, lowerLimit, time[timeType]);
     return (
-        <div>
-            <button onClick={() => addSlice(timeTypes[timeType], boostAmt, upperLimit, time[timeType])} disabled={upperLimit <= time[timeType]}>
-                ++
-            </button>
-            <button onClick={() => increment(timeTypes[timeType])} disabled={upperLimit <= time[timeType]}>+</button>
+        <div className={styles.Root}>
+            <Button
+                onClick={() => addSlice(timeTypes[timeType], boostAmt, upperLimit, time[timeType])}
+                disabled={upperLimit <= time[timeType]}>
+                <i class={`fa fa-angle-double-up ${styles.Icon}`} aria-hidden="true" />
+            </Button>
+            <Button
+                onClick={() => increment(timeTypes[timeType])}
+                disabled={upperLimit <= time[timeType]}>
+                <i class={`fa fa-angle-up ${styles.Icon}`} aria-hidden="true" />
+            </Button>
             {time[timeType]}
-            <button onClick={() => decrement(timeTypes[timeType])} disabled={lowerLimit >= time[timeType]}>-</button>
-            <button onClick={() => subtractSlice(timeTypes[timeType], boostAmt, lowerLimit, time[timeType])} disabled={lowerLimit >= time[timeType]}>
-                --
-            </button>
+            <Button
+                onClick={() => decrement(timeTypes[timeType])}
+                disabled={lowerLimit >= time[timeType]}>
+                <i class={`fa fa-angle-down ${styles.Icon}`} aria-hidden="true" />
+            </Button>
+            <Button
+                onClick={() => subtractSlice(timeTypes[timeType], boostAmt, lowerLimit, time[timeType])}
+                disabled={lowerLimit >= time[timeType]}>
+                <i class={`fa fa-angle-double-down ${styles.Icon}`} aria-hidden="true" />
+            </Button>
         </div>
     )
 }
@@ -37,7 +51,7 @@ const mapDispatchToProps = dispatch => ({
         dispatch(actions.updateTime(Math.min(amount, upperLimit - curr), timeType))
     ),
     subtractSlice: (timeType, amount, lowerLimit, curr) => (
-        dispatch(actions.updateTime(Math.max(-amount, curr - lowerLimit), timeType))
+        dispatch(actions.updateTime(Math.max(-amount, lowerLimit - curr), timeType))
     ),
 })
 

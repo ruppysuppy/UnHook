@@ -1,0 +1,11 @@
+.Root h1 {
+	display: flex;
+	justify-content: center;
+}
+
+.Logo {
+	height: 32px;
+	width: 32px;
+	display: inline-block;
+	margin: auto 8px;
+}

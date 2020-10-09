@@ -1,0 +1,43 @@
+.Root {
+	background-color: transparent;
+	border: none;
+	outline: none !important;
+	transition: 0.2s;
+	height: 36px;
+	width: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 8px;
+	border-radius: 8px;
+	font-size: larger;
+	font-weight: 900;
+}
+
+.Root:hover {
+	cursor: pointer;
+	color: white;
+	background-color: rgba(128, 128, 128, 0.6);
+}
+
+.Root:disabled {
+	color: rgb(200, 200, 200);
+}
+
+.Danger {
+	color: red;
+}
+
+.Danger:hover {
+	color: white;
+	background-color: rgb(255, 50, 50);
+}
+
+.Success {
+	color: green;
+}
+
+.Success:hover {
+	color: white;
+	background-color: rgba(0, 90, 0, 0.8);
+}

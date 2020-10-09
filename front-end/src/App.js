@@ -1,15 +1,24 @@
 import React from 'react';
 
+import 'font-awesome/css/font-awesome.min.css'
+
 import Timer from './components/Timer/Timer';
+
+import LogoBlack from './static/img/logo-black.png'
+
+import styles from './app.module.css'
 
 function App() {
   return (
-    <div align="center">
-      <h1>
-        Un-Hook
+    <>
+      <div className={styles.Root}>
+        <h1>
+          <img className={styles.Logo} src={LogoBlack} alt="Unhook" />
+        UnHook
       </h1>
+      </div>
       <Timer />
-    </div>
+    </>
   );
 }
 
