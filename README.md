@@ -22,4 +22,4 @@ The solution? Use Un-Hook. An app that reminds you to take breaks at the right t
 
 1. Electron
 2. React
-3. Redux (This is an overkill for such a small app, but I need to practice using redux + electron)
+3. Redux (This is an overkill for such a small app, its used for practicing redux + electron integration)
