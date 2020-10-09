@@ -1,11 +1,14 @@
 import React from 'react';
 
+import Timer from './components/Timer/Timer';
+
 function App() {
   return (
-    <div>
+    <div align="center">
       <h1>
-        App Base
+        Un-Hook
       </h1>
+      <Timer />
     </div>
   );
 }
