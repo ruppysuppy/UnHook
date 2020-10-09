@@ -24,6 +24,10 @@
 	color: rgb(200, 200, 200);
 }
 
+.Root:disabled:hover {
+	color: rgb(215, 215, 215);
+}
+
 .Danger {
 	color: red;
 }
