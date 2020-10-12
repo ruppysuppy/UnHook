@@ -15,11 +15,11 @@ const isDev = process.env.NODE_ENV === status.DEVELOPMENT
 
 function createMainWindow() {
     mainWindow = new BrowserWindow({
-        height: 600,
-        width: 450,
+        height: 400,
+        width: 350,
         frame: false,
         hasShadow: true,
-        resizable: false,
+        resizable: isDev,
         icon: path.join(__dirname, "assets", "img", "logo-black.png"),
         webPreferences: {
             nodeIntegration: true

@@ -2,4 +2,10 @@
 	display: flex;
 	width: 100%;
 	justify-content: space-evenly;
+	align-items: center;
+}
+
+.Colon {
+	font-weight: 900;
+	font-size: xx-large;
 }

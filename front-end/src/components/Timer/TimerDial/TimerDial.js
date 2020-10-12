@@ -37,11 +37,7 @@ function TimerDial({ timeType, time, increment, decrement, upperLimit, lowerLimi
 }
 
 const mapStateToProps = state => ({
-    time: {
-        hh: state.hh,
-        mm: state.mm,
-        ss: state.ss,
-    }
+    time: state.timer
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -6,7 +6,7 @@ import thunk from 'redux-thunk'
 
 import * as serviceWorker from './serviceWorker';
 
-import timeReducer from './store/reducers/timeReducer'
+import rootReducer from './store/reducers/rootReducer'
 
 import App from './App';
 
@@ -14,7 +14,7 @@ const composeEnhancers = (
   (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose
 )
 
-const store = createStore(timeReducer, composeEnhancers(
+const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(thunk)
 ))
 
