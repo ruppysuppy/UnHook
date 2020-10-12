@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/actionTypes'
 
-import timeTypes from '../constants/timeTypes'
+import timeTypes from '../../constants/timeTypes'
 
 const initialState = {
     hh: 0,

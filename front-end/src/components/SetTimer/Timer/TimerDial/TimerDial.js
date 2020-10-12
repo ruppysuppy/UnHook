@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import * as actions from '../../../store/actions/actions'
-import timeTypes from '../../../store/constants/timeTypes'
+import * as actions from '../../../../store/actions/actions'
+import timeTypes from '../../../../constants/timeTypes'
 
-import Button from '../../Button/Button'
+import Button from '../../../Button/Button'
 
 import styles from './timer-dial.module.css'
 
@@ -14,23 +14,23 @@ function TimerDial({ timeType, time, increment, decrement, upperLimit, lowerLimi
             <Button
                 onClick={() => addSlice(timeTypes[timeType], boostAmt, upperLimit, time[timeType])}
                 disabled={upperLimit <= time[timeType]}>
-                <i class={`fa fa-angle-double-up ${styles.Icon}`} aria-hidden="true" />
+                <i className={`fa fa-angle-double-up ${styles.Icon}`} aria-hidden="true" />
             </Button>
             <Button
                 onClick={() => increment(timeTypes[timeType])}
                 disabled={upperLimit <= time[timeType]}>
-                <i class={`fa fa-angle-up ${styles.Icon}`} aria-hidden="true" />
+                <i className={`fa fa-angle-up ${styles.Icon}`} aria-hidden="true" />
             </Button>
             {time[timeType]}
             <Button
                 onClick={() => decrement(timeTypes[timeType])}
                 disabled={lowerLimit >= time[timeType]}>
-                <i class={`fa fa-angle-down ${styles.Icon}`} aria-hidden="true" />
+                <i className={`fa fa-angle-down ${styles.Icon}`} aria-hidden="true" />
             </Button>
             <Button
                 onClick={() => subtractSlice(timeTypes[timeType], boostAmt, lowerLimit, time[timeType])}
                 disabled={lowerLimit >= time[timeType]}>
-                <i class={`fa fa-angle-double-down ${styles.Icon}`} aria-hidden="true" />
+                <i className={`fa fa-angle-double-down ${styles.Icon}`} aria-hidden="true" />
             </Button>
         </div>
     )

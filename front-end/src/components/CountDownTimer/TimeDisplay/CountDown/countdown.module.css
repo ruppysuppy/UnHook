@@ -2,8 +2,5 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-.Icon {
-	/* color: rgb(0, 17, 255); */
+	padding: 48px 0;
 }

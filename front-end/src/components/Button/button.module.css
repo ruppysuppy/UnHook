@@ -28,17 +28,36 @@
 	color: rgb(215, 215, 215);
 }
 
-.Danger {
-	color: red;
+.Secondary {
+	color: grey;
+	border: 2px solid grey;
+	font-size: medium;
+}
+
+.Secondary:hover {
+	color: white;
+	background-color: grey;
 }
 
 .Danger:hover {
 	color: white;
-	background-color: rgb(255, 50, 50);
+	background-color: grey;
+}
+
+.Danger {
+	color: red;
+	border: 2px solid red;
+	font-size: medium;
+}
+
+.Danger:hover {
+	color: white;
+	background-color: red;
 }
 
 .Success {
 	color: green;
+	border: 2px solid green;
 }
 
 .Success:hover {
