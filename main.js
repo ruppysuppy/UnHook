@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 
 const status = {
@@ -9,6 +9,8 @@ const status = {
 process.env.NODE_ENV = status.DEVELOPMENT
 
 let mainWindow = null
+let infoWindow = null
+
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
 const isDev = process.env.NODE_ENV === status.DEVELOPMENT
@@ -20,16 +22,40 @@ function createMainWindow() {
         frame: false,
         hasShadow: true,
         resizable: isDev,
-        icon: path.join(__dirname, "assets", "img", "logo-black.png"),
+        show: true,
+        icon: path.join(__dirname, "assets", "img", "logo-white.png"),
         webPreferences: {
             nodeIntegration: true
         }
     })
 
-    mainWindow.loadURL('http://localhost:3000/')
+    mainWindow.loadURL(isDev ? 'http://localhost:3000/' : path.join(__dirname, "front-end", "build", "index.html"))
+    // mainWindow.on("blur", () => mainWindow.hide())
 }
 
-app.on('ready', createMainWindow)
+function createInfoWindow() {
+    infoWindow = new BrowserWindow({
+        height: 175,
+        width: 300,
+        frame: false,
+        resizable: false,
+        hasShadow: true,
+        icon: path.join(__dirname, "assets", "img", "logo-white.png"),
+        webPreferences: {
+            nodeIntegration: true
+        }
+    })
+
+    infoWindow.loadFile(path.join(__dirname, "info-window", "index.html"))
+    ipcMain.on("info:close", () => {
+        infoWindow.close()
+        infoWindow = null
+    })
+
+    createMainWindow()
+}
+
+app.on('ready', createInfoWindow)
 
 app.on('window-all-closed', () => {
     if (isMac) {
