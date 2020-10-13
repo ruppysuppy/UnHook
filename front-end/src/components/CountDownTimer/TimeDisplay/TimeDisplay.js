@@ -7,6 +7,8 @@ import * as actions from '../../../store/actions/actions'
 
 import timeTypes from '../../../constants/timeTypes'
 
+import Logo from '../../../static/img/logo-white.png'
+
 import styles from './time-display.module.css'
 
 const getSeconds = time => {
@@ -26,7 +28,7 @@ const getTime = seconds => {
 
 let countdown = null
 
-function TimeDisplay({ timer, resetCounterActive, resetCounterRunning, isCountdownRunning }) {
+function TimeDisplay({ timer, resetCounterActive, resetCounterRunning, isCountdownRunning, updateInfo }) {
     const [secondsLeft, setSecondsLeft] = useState(getSeconds(timer))
 
     const clearTimer = () => {
@@ -40,6 +42,11 @@ function TimeDisplay({ timer, resetCounterActive, resetCounterRunning, isCountdo
             if (currSecondsLeft <= 1) {
                 clearTimer()
                 resetCounterActive()
+                updateInfo("Time for a break!")
+                new Notification("Work Time is up", {
+                    body: "Time to take a break!",
+                    icon: Logo
+                })
             }
             return currSecondsLeft - 1
         })
@@ -59,7 +66,6 @@ function TimeDisplay({ timer, resetCounterActive, resetCounterRunning, isCountdo
             }
         }
     }, [isCountdownRunning])
-
 
     const time = getTime(secondsLeft)
 
@@ -81,7 +87,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     resetCounterActive: () => dispatch(actions.setIsCounterActive(false)),
-    resetCounterRunning: () => dispatch(actions.setIsCounterRunning(false))
+    resetCounterRunning: () => dispatch(actions.setIsCounterRunning(false)),
+    updateInfo: (info) => dispatch(actions.updateInfoText(info))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TimeDisplay)

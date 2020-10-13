@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes'
 
+// Timer Actions
 export const updateTime = (deltaTime, timeType) => ({
     type: actionTypes.UPDATE_TIME,
     payload: {
@@ -8,6 +9,7 @@ export const updateTime = (deltaTime, timeType) => ({
     }
 })
 
+// Countdown Actions
 export const setIsCounterActive = (status) => ({
     type: actionTypes.SET_IS_COUNTDOWN_ACTIVE,
     payload: {
@@ -21,3 +23,20 @@ export const setIsCounterRunning = (status) => ({
         status: status
     }
 })
+
+// Info Actions
+export const setInfoText = (text) => ({
+    type: actionTypes.SET_INFO_TEXT,
+    payload: {
+        text: text
+    }
+})
+
+export const clearInfoText = () => ({
+    type: actionTypes.CLEAR_INFO_TEXT
+})
+
+export const updateInfoText = (text, delay = 2000) => dispatch => {
+    dispatch(setInfoText(text))
+    setTimeout(() => dispatch(clearInfoText()), delay)
+} 

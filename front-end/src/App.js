@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import TopFrame from './components/TopFrame/TopFrame';
+import CountDownTimer from './components/CountDownTimer/CountDownTimer';
+import Info from './components/Info/Info';
 import SetTimer from './components/SetTimer/SetTimer';
+import TopFrame from './components/TopFrame/TopFrame';
 
 import 'font-awesome/css/font-awesome.min.css'
-import CountDownTimer from './components/CountDownTimer/CountDownTimer';
 
 function App({ isCounterActive }) {
   return (
@@ -14,6 +15,7 @@ function App({ isCounterActive }) {
       {isCounterActive ?
         <CountDownTimer /> :
         <SetTimer />}
+      <Info />
     </>
   );
 }

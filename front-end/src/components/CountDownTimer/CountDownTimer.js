@@ -8,18 +8,21 @@ import * as actions from '../../store/actions/actions'
 
 import styles from './countdown-timer.module.css'
 
-function CountDownTimer({ isCountdownRunning, resetCounterActive, resetCounterRunning, setCounterRunning }) {
+function CountDownTimer({ isCountdownRunning, resetCounterActive, resetCounterRunning, setCounterRunning, updateInfo }) {
     const playHandler = () => {
         setCounterRunning()
+        updateInfo("Play")
     }
 
     const pauseHandler = () => {
         resetCounterRunning()
+        updateInfo("Pause")
     }
 
     const stopHandler = () => {
         resetCounterActive()
         resetCounterRunning()
+        updateInfo("Stop")
     }
 
     return (
@@ -57,7 +60,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     resetCounterActive: () => dispatch(actions.setIsCounterActive(false)),
     resetCounterRunning: () => dispatch(actions.setIsCounterRunning(false)),
-    setCounterRunning: () => dispatch(actions.setIsCounterRunning(true))
+    setCounterRunning: () => dispatch(actions.setIsCounterRunning(true)),
+    updateInfo: (info) => dispatch(actions.updateInfoText(info))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CountDownTimer)

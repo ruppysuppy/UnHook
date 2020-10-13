@@ -2,7 +2,8 @@ import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
     isCountdownActive: false,
-    isCountdownRunning: false
+    isCountdownRunning: false,
+    info: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,8 +19,16 @@ const reducer = (state = initialState, action) => {
             stateCopy.isCountdownRunning = payload.status
             return stateCopy
 
+        case actionTypes.SET_INFO_TEXT:
+            stateCopy.info = payload.text
+            return stateCopy
+
+        case actionTypes.CLEAR_INFO_TEXT:
+            stateCopy.info = null
+            return stateCopy
+
         default:
-            return state;
+            return stateCopy;
     }
 }
 

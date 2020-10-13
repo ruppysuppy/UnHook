@@ -1,4 +1,4 @@
-# Un-Hook
+# UnHook
 
 <div align="center">
     <img src="./assets/img/logo-black.png" style="width: 200px" />

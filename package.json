@@ -1,6 +1,6 @@
 {
   "name": "unhook",
-  "productName": "Un-Hook",
+  "productName": "UnHook",
   "version": "1.0.0",
   "description": "If you are one of the rare breed of people who call themselves programmers, you must have faced the following sitation: You were so busy working, that you forgot to take a break while coding... now your eyes hurt due to the excessive stress on them. The solution? Use UnHook, an app that helps you un-hook yourself from the screen by reminding you to take breaks at the right time.",
   "main": "main.js",
@@ -9,7 +9,7 @@
     "dev": "nodemon --exec npm run start",
     "start-front-end": "cd front-end && npm run start",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/img/logo-white.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/img/logo-white.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Un-Hook\"",
+    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/img/logo-white.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"UnHook\"",
     "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/img/logo-white.png --prune=true --out=release-builds",
     "install-dependencies": "npm install && cd front-end && npm install"
   },

@@ -6,7 +6,6 @@ import statusReducer from './statusReducer'
 const rootReducer = combineReducers({
     timer: timeReducer,
     status: statusReducer
-
 })
 
 export default rootReducer

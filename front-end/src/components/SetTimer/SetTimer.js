@@ -8,10 +8,11 @@ import * as actions from '../../store/actions/actions'
 
 import styles from './setTimer.module.css'
 
-function SetTimer({ setCounterActive, setCounterRunning }) {
+function SetTimer({ setCounterActive, setCounterRunning, updateInfo }) {
     const startTimer = () => {
         setCounterActive()
         setCounterRunning()
+        updateInfo("Timer Started")
     }
 
     return (
@@ -32,7 +33,8 @@ function SetTimer({ setCounterActive, setCounterRunning }) {
 
 const mapDispatchToProps = dispatch => ({
     setCounterActive: () => dispatch(actions.setIsCounterActive(true)),
-    setCounterRunning: () => dispatch(actions.setIsCounterRunning(true))
+    setCounterRunning: () => dispatch(actions.setIsCounterRunning(true)),
+    updateInfo: (info) => dispatch(actions.updateInfoText(info))
 })
 
 export default connect(null, mapDispatchToProps)(SetTimer)
