@@ -31,7 +31,6 @@
 .Secondary {
 	color: grey;
 	border: 2px solid grey;
-	font-size: medium;
 }
 
 .Secondary:hover {
@@ -47,7 +46,6 @@
 .Danger {
 	color: red;
 	border: 2px solid red;
-	font-size: medium;
 }
 
 .Danger:hover {
@@ -63,4 +61,10 @@
 .Success:hover {
 	color: white;
 	background-color: rgba(0, 90, 0, 0.8);
+}
+
+.Danger,
+.Success,
+.Secondary {
+	font-size: medium;
 }

@@ -8,7 +8,12 @@ import * as actions from '../../store/actions/actions'
 
 import styles from './setTimer.module.css'
 
-function SetTimer({ setCounterActive }) {
+function SetTimer({ setCounterActive, setCounterRunning }) {
+    const startTimer = () => {
+        setCounterActive()
+        setCounterRunning()
+    }
+
     return (
         <div className={styles.Root}>
             <Timer />
@@ -17,7 +22,7 @@ function SetTimer({ setCounterActive }) {
                 style={{
                     margin: "32px"
                 }}
-                onClick={setCounterActive}
+                onClick={startTimer}
             >
                 <i className="fa fa-play" aria-hidden="true"></i>
             </Button>
@@ -26,7 +31,8 @@ function SetTimer({ setCounterActive }) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    setCounterActive: () => dispatch(actions.setIsCounterActive(true))
+    setCounterActive: () => dispatch(actions.setIsCounterActive(true)),
+    setCounterRunning: () => dispatch(actions.setIsCounterRunning(true))
 })
 
 export default connect(null, mapDispatchToProps)(SetTimer)

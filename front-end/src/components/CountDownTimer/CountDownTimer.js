@@ -8,20 +8,40 @@ import * as actions from '../../store/actions/actions'
 
 import styles from './countdown-timer.module.css'
 
-function CountDownTimer({ setCounterActive, setCounterRunning }) {
+function CountDownTimer({ isCountdownRunning, resetCounterActive, resetCounterRunning, setCounterRunning }) {
+    const playHandler = () => {
+        setCounterRunning()
+    }
+
+    const pauseHandler = () => {
+        resetCounterRunning()
+    }
+
+    const stopHandler = () => {
+        resetCounterActive()
+        resetCounterRunning()
+    }
+
     return (
         <div className={styles.Root}>
             <TimeDisplay />
             <div className={styles.BtnContainer}>
-                <Button
-                    isSecondary
-                    onClick={setCounterRunning}
-                >
-                    <i className="fa fa-pause" aria-hidden="true"></i>
-                </Button>
+                {isCountdownRunning ?
+                    <Button
+                        isSecondary
+                        onClick={pauseHandler}
+                    >
+                        <i className="fa fa-pause" aria-hidden="true"></i>
+                    </Button> :
+                    <Button
+                        isSuccess
+                        onClick={playHandler}
+                    >
+                        <i className="fa fa-play" aria-hidden="true"></i>
+                    </Button>}
                 <Button
                     isDanger
-                    onClick={setCounterActive}
+                    onClick={stopHandler}
                 >
                     <i className="fa fa-stop" aria-hidden="true"></i>
                 </Button>
@@ -30,9 +50,14 @@ function CountDownTimer({ setCounterActive, setCounterRunning }) {
     )
 }
 
-const mapDispatchToProps = dispatch => ({
-    setCounterActive: () => dispatch(actions.setIsCounterActive(false)),
-    setCounterRunning: () => dispatch(actions.setIsCounterRunning(false))
+const mapStateToProps = state => ({
+    isCountdownRunning: state.status.isCountdownRunning
 })
 
-export default connect(null, mapDispatchToProps)(CountDownTimer)
+const mapDispatchToProps = dispatch => ({
+    resetCounterActive: () => dispatch(actions.setIsCounterActive(false)),
+    resetCounterRunning: () => dispatch(actions.setIsCounterRunning(false)),
+    setCounterRunning: () => dispatch(actions.setIsCounterRunning(true))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CountDownTimer)
