@@ -4,15 +4,26 @@ import { connect } from 'react-redux'
 import Button from '../Button/Button'
 import Timer from './Timer/Timer'
 
+import timeTypes from '../../constants/timeTypes'
+
 import * as actions from '../../store/actions/actions'
 
 import styles from './setTimer.module.css'
 
-function SetTimer({ setCounterActive, setCounterRunning, updateInfo }) {
+const getSeconds = time => {
+    const seconds = time[timeTypes.hh] * 3600 + time[timeTypes.mm] * 60 + time[timeTypes.ss]
+    return seconds
+}
+
+function SetTimer({ setCounterActive, setCounterRunning, timer, updateInfo }) {
     const startTimer = () => {
-        setCounterActive()
-        setCounterRunning()
-        updateInfo("Timer Started")
+        if (getSeconds(timer) >= 10) {
+            setCounterActive()
+            setCounterRunning()
+            updateInfo("Timer Started")
+        } else {
+            updateInfo("Min Time Slot: 10 secs")
+        }
     }
 
     return (
@@ -31,10 +42,14 @@ function SetTimer({ setCounterActive, setCounterRunning, updateInfo }) {
     )
 }
 
+const mapStateToProps = state => ({
+    timer: state.timer
+})
+
 const mapDispatchToProps = dispatch => ({
     setCounterActive: () => dispatch(actions.setIsCounterActive(true)),
     setCounterRunning: () => dispatch(actions.setIsCounterRunning(true)),
     updateInfo: (info) => dispatch(actions.updateInfoText(info))
 })
 
-export default connect(null, mapDispatchToProps)(SetTimer)
+export default connect(mapStateToProps, mapDispatchToProps)(SetTimer)
