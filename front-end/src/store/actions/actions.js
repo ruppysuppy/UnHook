@@ -36,7 +36,15 @@ export const clearInfoText = () => ({
     type: actionTypes.CLEAR_INFO_TEXT
 })
 
+let infoTimer = null
 export const updateInfoText = (text, delay = 2000) => dispatch => {
-    dispatch(setInfoText(text))
-    setTimeout(() => dispatch(clearInfoText()), delay)
+    if (infoTimer) {
+        dispatch(clearInfoText())
+        clearTimeout(infoTimer)
+        infoTimer = null
+    }
+    setTimeout(() => {
+        dispatch(setInfoText(text))
+        infoTimer = setTimeout(() => dispatch(clearInfoText()), delay)
+    }, 1)
 } 
