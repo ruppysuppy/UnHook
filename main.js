@@ -1,6 +1,8 @@
 const { app, BrowserWindow, ipcMain, Tray, Menu } = require('electron')
 const path = require('path')
 
+const DataIO = require("./DataIO")
+
 const status = {
     DEVELOPMENT: "DEVELOPMENT",
     PRODUCTION: "PRODUCTION"
@@ -33,6 +35,9 @@ function createMainWindow() {
 
     mainWindow.loadURL(isDev ? 'http://localhost:3000/' : path.join(__dirname, "front-end", "build", "index.html"))
     mainWindow.on("blur", () => mainWindow.hide())
+
+    mainWindow.webContents.send("time:set", DataIO.readData())
+    ipcMain.on("time:save", (_, time) => DataIO.saveData(time))
 }
 
 function createTray() {
@@ -42,8 +47,11 @@ function createTray() {
     tray.on("right-click", () => {
         const contextMenu = Menu.buildFromTemplate([
             {
-                label: "Open UnHook",
+                label: "Open",
                 click: () => mainWindow.show()
+            },
+            {
+                type: "separator"
             },
             {
                 label: "Quit",

@@ -3,6 +3,10 @@
 /.pnp
 .pnp.js
 
+# data
+data.json
+unhookData/
+
 # testing
 /coverage
 

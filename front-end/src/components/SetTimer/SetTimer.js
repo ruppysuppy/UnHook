@@ -10,6 +10,8 @@ import * as actions from '../../store/actions/actions'
 
 import styles from './setTimer.module.css'
 
+const { ipcRenderer } = window.require('electron');
+
 const getSeconds = time => {
     const seconds = time[timeTypes.hh] * 3600 + time[timeTypes.mm] * 60 + time[timeTypes.ss]
     return seconds
@@ -21,6 +23,9 @@ function SetTimer({ setCounterActive, setCounterRunning, timer, updateInfo }) {
             setCounterActive()
             setCounterRunning()
             updateInfo("Timer Started")
+
+            // STORE DATA
+            ipcRenderer.send("time:save", timer)
         } else {
             updateInfo("Min Time Slot: 10 secs")
         }

@@ -6,7 +6,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "dev": "nodemon --exec npm run start",
+    "dev": "nodemon --exec npm run start --config nodemon.json",
     "start-front-end": "cd front-end && npm run start",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/img/logo-white.icns --prune=true --out=release-builds",
     "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/img/logo-white.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"UnHook\"",
