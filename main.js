@@ -24,9 +24,9 @@ function createMainWindow() {
         width: 350,
         frame: false,
         hasShadow: true,
-        resizable: isDev,
-        show: false,
-        skipTaskbar: true,
+        resizable: false,
+        show: isDev,
+        skipTaskbar: !isDev,
         icon: path.join(__dirname, "assets", "img", "logo-white.png"),
         webPreferences: {
             nodeIntegration: true
@@ -34,10 +34,12 @@ function createMainWindow() {
     })
 
     mainWindow.loadURL(isDev ? 'http://localhost:3000/' : path.join(__dirname, "front-end", "build", "index.html"))
-    mainWindow.on("blur", () => mainWindow.hide())
+    mainWindow.on("blur", () => isDev ? null : mainWindow.hide())
 
-    mainWindow.webContents.send("time:set", DataIO.readData())
+    ipcMain.on("app:ready", () => mainWindow.webContents.send("time:set", DataIO.readData()))
     ipcMain.on("time:save", (_, time) => DataIO.saveData(time))
+
+    createTray()
 }
 
 function createTray() {
@@ -82,10 +84,9 @@ function createInfoWindow() {
     })
 
     createMainWindow()
-    createTray()
 }
 
-app.on('ready', createInfoWindow)
+app.on('ready', isDev ? createMainWindow : createInfoWindow)
 
 app.on('window-all-closed', () => {
     if (isMac) {

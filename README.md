@@ -39,3 +39,7 @@ The solution? Use UnHook, an app that helps you un-hook yourself from the screen
 1. Electron
 2. React
 3. Redux (This is an overkill for such a small app, its used for practicing redux + electron integration)
+
+## Note
+
+The app won't run properly in the browser as it is made specifically for desktop using electron

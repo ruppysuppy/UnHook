@@ -22,6 +22,7 @@ function App({ isCounterActive, updateTime }) {
       updateTime(time[timeTypes.mm], timeTypes.mm)
       updateTime(time[timeTypes.ss], timeTypes.ss)
     })
+    ipcRenderer.send("app:ready", null)
   }, [])
 
   return (
