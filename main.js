@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron')
+const { app, BrowserWindow, ipcMain, Tray, Menu } = require('electron')
 const path = require('path')
 
 const status = {
@@ -10,6 +10,7 @@ process.env.NODE_ENV = status.DEVELOPMENT
 
 let mainWindow = null
 let infoWindow = null
+let tray = null
 
 const isMac = process.platform === 'darwin'
 const isWin = process.platform === 'win32'
@@ -22,7 +23,8 @@ function createMainWindow() {
         frame: false,
         hasShadow: true,
         resizable: isDev,
-        show: true,
+        show: false,
+        skipTaskbar: true,
         icon: path.join(__dirname, "assets", "img", "logo-white.png"),
         webPreferences: {
             nodeIntegration: true
@@ -30,7 +32,26 @@ function createMainWindow() {
     })
 
     mainWindow.loadURL(isDev ? 'http://localhost:3000/' : path.join(__dirname, "front-end", "build", "index.html"))
-    // mainWindow.on("blur", () => mainWindow.hide())
+    mainWindow.on("blur", () => mainWindow.hide())
+}
+
+function createTray() {
+    tray = new Tray(path.join(__dirname, "assets", "img", "tray-icon.png"))
+
+    tray.on("click", () => mainWindow.show())
+    tray.on("right-click", () => {
+        const contextMenu = Menu.buildFromTemplate([
+            {
+                label: "Open UnHook",
+                click: () => mainWindow.show()
+            },
+            {
+                label: "Quit",
+                click: () => app.quit()
+            }
+        ])
+        tray.popUpContextMenu(contextMenu)
+    })
 }
 
 function createInfoWindow() {
@@ -53,6 +74,7 @@ function createInfoWindow() {
     })
 
     createMainWindow()
+    createTray()
 }
 
 app.on('ready', createInfoWindow)
