@@ -8,7 +8,7 @@ const status = {
     PRODUCTION: "PRODUCTION"
 }
 
-process.env.NODE_ENV = status.DEVELOPMENT
+process.env.NODE_ENV = status.PRODUCTION
 
 let mainWindow = null
 let infoWindow = null
@@ -45,7 +45,22 @@ function createMainWindow() {
 function createTray() {
     tray = new Tray(path.join(__dirname, "assets", "img", "tray-icon.png"))
 
-    tray.on("click", () => mainWindow.show())
+    const trayClick = (_, bounds) => {
+        const { width, height } = mainWindow.getBounds()
+        const posX = bounds.x - (width / 2)
+        const posY = isWin ? bounds.y - height : bounds.y
+
+        const updatedBounds = {
+            x: posX,
+            y: posY,
+            height,
+            width,
+        }
+        mainWindow.setBounds(updatedBounds)
+        mainWindow.show()
+    }
+
+    tray.on("click", trayClick)
     tray.on("right-click", () => {
         const contextMenu = Menu.buildFromTemplate([
             {
