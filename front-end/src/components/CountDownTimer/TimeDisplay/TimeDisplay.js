@@ -11,6 +11,8 @@ import Logo from '../../../static/img/logo-white.png'
 
 import styles from './time-display.module.css'
 
+const { ipcRenderer } = window.require('electron');
+
 const getSeconds = time => {
     const seconds = time[timeTypes.hh] * 3600 + time[timeTypes.mm] * 60 + time[timeTypes.ss]
     return seconds
@@ -25,6 +27,8 @@ const getTime = seconds => {
     time[timeTypes.ss] = seconds
     return time
 }
+
+const formatTime = (time) => ("0" + time).slice(-2);
 
 let countdown = null
 
@@ -48,6 +52,11 @@ function TimeDisplay({ timer, resetCounterActive, resetCounterRunning, isCountdo
                     icon: Logo
                 })
             }
+            const time = getTime(currSecondsLeft - 1)
+            ipcRenderer.send(
+                "timer:update",
+                currSecondsLeft <= 1 ? "" : `UnHook\nTime Left: ${formatTime(time[timeTypes.hh])}:${formatTime(time[timeTypes.mm])}:${formatTime(time[timeTypes.ss])}`
+            )
             return currSecondsLeft - 1
         })
     }

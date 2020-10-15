@@ -61,6 +61,8 @@ const initialize = () => {
     createMainWindow()
     createTray()
     !isDev && createInfoWindow()
+
+    ipcMain.on("timer:update", (_, time) => isWin ? tray.setToolTip(time) : tray.setTitle(time))
 }
 
 app.on('ready', initialize)

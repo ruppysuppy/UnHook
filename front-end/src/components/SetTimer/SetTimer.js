@@ -12,6 +12,8 @@ import styles from './setTimer.module.css'
 
 const { ipcRenderer } = window.require('electron');
 
+const formatTime = (time) => ("0" + time).slice(-2);
+
 const getSeconds = time => {
     const seconds = time[timeTypes.hh] * 3600 + time[timeTypes.mm] * 60 + time[timeTypes.ss]
     return seconds
@@ -26,6 +28,11 @@ function SetTimer({ setCounterActive, setCounterRunning, timer, updateInfo }) {
 
             // STORE DATA
             ipcRenderer.send("time:save", timer)
+            // UPDATE UI
+            ipcRenderer.send(
+                "timer:update",
+                `UnHook\nTime Left: ${formatTime(timer[timeTypes.hh])}:${formatTime(timer[timeTypes.mm])}:${formatTime(timer[timeTypes.ss])}`
+            )
         } else {
             updateInfo("Min Time Slot: 10 secs")
         }
