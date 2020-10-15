@@ -27,6 +27,12 @@ You were so busy working, that you forgot to take a break while coding... now yo
 
 The solution? Use UnHook, an app that helps you un-hook yourself from the screen by reminding you to take breaks at the right time.
 
+## Demo
+
+<div align="center">
+    <img src="./screenshots/UnHook.gif" style="width: 200px" />
+</div>
+
 ## Platforms
 
 1. Windows
@@ -43,12 +49,14 @@ The solution? Use UnHook, an app that helps you un-hook yourself from the screen
 
 1. Download and go to the repository location.
 2. Install depenencies for main app using `npm run install-dependencies`
-3. Use `npm run start-front-end` to start the react app
+3. Perform either of the following based on the development status of the app you are using:
+    - **PRODUCTION (default):** Use `npm run build-front-end` to build the react app
+    - **DEVELOPMENT:** Use `npm run start-front-end` to start the react app
 4. Use `npm run dev` to start the electron app
 
 ## Packaging
 
-1. Make sure that `process.env.NODE_ENV` is set to `PRODUCTION` in main.js
+1. Make sure that `process.env.NODE_ENV` is set to `PRODUCTION` in [main.js](./main.js)
 2. Use `npm run build-front-end` to package the react app
 3. Use `npm run package-<platform>` to package the app for the desired platform (win/linux/mac)
 
