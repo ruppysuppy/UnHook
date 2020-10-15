@@ -62,7 +62,9 @@ const initialize = () => {
     createTray()
     !isDev && createInfoWindow()
 
-    ipcMain.on("timer:update", (_, time) => isWin ? tray.setToolTip(time) : tray.setTitle(time))
+    ipcMain.on("timer:update", (_, time) => isWin ?
+        tray.setToolTip(time.length > 0 ? `UnHook\nTime Left: ${time}` : "")
+        : tray.setTitle(time))
 }
 
 app.on('ready', initialize)

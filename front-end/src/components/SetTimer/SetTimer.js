@@ -31,7 +31,7 @@ function SetTimer({ setCounterActive, setCounterRunning, timer, updateInfo }) {
             // UPDATE UI
             ipcRenderer.send(
                 "timer:update",
-                `UnHook\nTime Left: ${formatTime(timer[timeTypes.hh])}:${formatTime(timer[timeTypes.mm])}:${formatTime(timer[timeTypes.ss])}`
+                `${formatTime(timer[timeTypes.hh])}:${formatTime(timer[timeTypes.mm])}:${formatTime(timer[timeTypes.ss])}`
             )
         } else {
             updateInfo("Min Time Slot: 10 secs")

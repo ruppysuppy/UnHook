@@ -55,7 +55,9 @@ function TimeDisplay({ timer, resetCounterActive, resetCounterRunning, isCountdo
             const time = getTime(currSecondsLeft - 1)
             ipcRenderer.send(
                 "timer:update",
-                currSecondsLeft <= 1 ? "" : `UnHook\nTime Left: ${formatTime(time[timeTypes.hh])}:${formatTime(time[timeTypes.mm])}:${formatTime(time[timeTypes.ss])}`
+                currSecondsLeft <= 1 ?
+                    "" :
+                    `${formatTime(time[timeTypes.hh])}:${formatTime(time[timeTypes.mm])}:${formatTime(time[timeTypes.ss])}`
             )
             return currSecondsLeft - 1
         })
