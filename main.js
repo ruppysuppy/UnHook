@@ -26,6 +26,12 @@ let mainWindow = null
 let infoWindow = null
 let tray = null
 
+const gotTheLock = app.requestSingleInstanceLock()
+
+if (!gotTheLock) {
+    app.quit()
+}
+
 function createMainWindow() {
     mainWindow = new MainWindow(
         path.join(__dirname, "assets", "img", "logo-white.png"),
@@ -78,5 +84,15 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
     if (mainWindow === null) {
         initialize()
+    }
+})
+
+app.on("second-instance", () => {
+    if (mainWindow) {
+        setTimeout(() => {
+            mainWindow.center()
+            mainWindow.show()
+            mainWindow.focus()
+        }, 1000)
     }
 })
