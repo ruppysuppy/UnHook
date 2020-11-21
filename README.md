@@ -4,7 +4,7 @@
     <img src="./assets/img/logo-black.png" style="width: 200px" />
 </div>
 
-<div align="center">
+<!-- <div align="center">
     <a href="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red.svg">
         <img alt="Open Source Love" src="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red.svg">
     </a>
@@ -17,7 +17,7 @@
     <a href="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
         <img alt="Code Style: Prittier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
     </a>
-</div>
+</div> -->
 
 <br><br>
 
