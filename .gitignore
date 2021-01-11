@@ -12,6 +12,7 @@ unhookData/
 
 # production
 /release-builds
+/app-build
 
 # misc
 .DS_Store
