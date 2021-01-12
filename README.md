@@ -37,7 +37,7 @@ The solution? Use UnHook, an app that helps you un-hook yourself from the screen
 
 1. Windows
 2. Linux
-3. Mac (iOS)
+3. MacOS
 
 ## Tools/Frameworks Used
 
@@ -58,7 +58,7 @@ The solution? Use UnHook, an app that helps you un-hook yourself from the screen
 
 1. Make sure that `process.env.NODE_ENV` is set to `PRODUCTION` in [main.js](./main.js)
 2. Use `npm run build-front-end` to package the react app
-3. Use `npm run package-<platform>` to package the app for the desired platform (win/linux/mac)
+3. Use `npm run build-app` to package the app for the current platform
 
 ## Note
 

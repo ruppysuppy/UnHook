@@ -10,7 +10,7 @@
     "start-front-end": "cd front-end && npm run start",
     "install-dependencies": "npm install && cd front-end && npm install",
     "build-front-end": "cd front-end && npm run build",
-    "build-installer": "electron-builder"
+    "build-app": "electron-builder"
   },
   "keywords": [
     "electron",
@@ -39,6 +39,7 @@
       "!package.json",
       "!package-lock.json"
     ],
+    "asar": false,
     "win": {
       "icon": "assets/img/logo-black.ico",
       "target": [
