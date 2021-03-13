@@ -1,7 +1,7 @@
 .Root {
-	padding-top: 48px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin-bottom: 24px;
+  padding-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
 }

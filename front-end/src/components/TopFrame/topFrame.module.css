@@ -1,20 +1,20 @@
 .Root {
-	height: 28px;
-	width: 100vw;
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	top: 0;
-	left: 0;
-	color: white;
-	background-color: rgb(50, 50, 50);
-	-webkit-user-select: none;
-	-webkit-app-region: drag;
+  height: 28px;
+  width: 100vw;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  color: white;
+  background-color: rgb(50, 50, 50);
+  -webkit-user-select: none;
+  -webkit-app-region: drag;
 }
 
 .Image {
-	height: 20px;
-	display: inline-block;
-	margin: auto 4px;
+  height: 20px;
+  display: inline-block;
+  margin: auto 4px;
 }

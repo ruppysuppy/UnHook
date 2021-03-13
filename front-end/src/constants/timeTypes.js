@@ -1,7 +1,7 @@
 const timeTypes = {
-    hh: "hh",
-    mm: "mm",
-    ss: "ss",
-}
+  hh: "hh",
+  mm: "mm",
+  ss: "ss",
+};
 
-export default timeTypes
+export default timeTypes;

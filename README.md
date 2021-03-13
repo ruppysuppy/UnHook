@@ -50,8 +50,8 @@ The solution? Use UnHook, an app that helps you un-hook yourself from the screen
 1. Download and go to the repository location.
 2. Install depenencies for main app using `npm run install-dependencies`
 3. Perform either of the following based on the development status of the app you are using:
-    - **PRODUCTION (default):** Use `npm run build-front-end` to build the react app
-    - **DEVELOPMENT:** Use `npm run start-front-end` to start the react app
+   - **PRODUCTION (default):** Use `npm run build-front-end` to build the react app
+   - **DEVELOPMENT:** Use `npm run start-front-end` to start the react app
 4. Use `npm run dev` to start the electron app
 
 ## Packaging

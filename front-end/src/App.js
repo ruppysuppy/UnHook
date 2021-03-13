@@ -1,48 +1,47 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-import CountDownTimer from './components/CountDownTimer/CountDownTimer';
-import Info from './components/Info/Info';
-import SetTimer from './components/SetTimer/SetTimer';
-import TopFrame from './components/TopFrame/TopFrame';
+import CountDownTimer from "./components/CountDownTimer/CountDownTimer";
+import Info from "./components/Info/Info";
+import SetTimer from "./components/SetTimer/SetTimer";
+import TopFrame from "./components/TopFrame/TopFrame";
 
-import timeTypes from './constants/timeTypes'
+import timeTypes from "./constants/timeTypes";
 
-import * as actions from './store/actions/actions'
+import * as actions from "./store/actions/actions";
 
-import 'font-awesome/css/font-awesome.min.css'
+import "font-awesome/css/font-awesome.min.css";
 
-const { ipcRenderer } = window.require('electron');
+const { ipcRenderer } = window.require("electron");
 
 function App({ isCounterActive, updateTime }) {
   useEffect(() => {
     ipcRenderer.on("time:set", (_, time) => {
       console.log(time);
-      updateTime(time[timeTypes.hh], timeTypes.hh)
-      updateTime(time[timeTypes.mm], timeTypes.mm)
-      updateTime(time[timeTypes.ss], timeTypes.ss)
-    })
-    ipcRenderer.send("app:ready", null)
-  }, [])
+      updateTime(time[timeTypes.hh], timeTypes.hh);
+      updateTime(time[timeTypes.mm], timeTypes.mm);
+      updateTime(time[timeTypes.ss], timeTypes.ss);
+    });
+    ipcRenderer.send("app:ready", null);
+  }, []);
 
   return (
     <>
       <TopFrame />
-      {isCounterActive ?
-        <CountDownTimer /> :
-        <SetTimer />}
+      {isCounterActive ? <CountDownTimer /> : <SetTimer />}
       <Info />
     </>
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isCounterActive: state.status.isCountdownActive,
-  time: state.timer
-})
+  time: state.timer,
+});
 
-const mapDispatchToProps = dispatch => ({
-  updateTime: (deltaTime, timeType) => dispatch(actions.updateTime(deltaTime, timeType))
-})
+const mapDispatchToProps = (dispatch) => ({
+  updateTime: (deltaTime, timeType) =>
+    dispatch(actions.updateTime(deltaTime, timeType)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

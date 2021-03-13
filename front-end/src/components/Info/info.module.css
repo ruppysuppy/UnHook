@@ -1,29 +1,29 @@
 .Root {
-	width: 100%;
-	overflow: hidden;
-	display: flex;
-	padding-top: 16px;
-	justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  padding-top: 16px;
+  justify-content: center;
 }
 
 .Text {
-	font-size: large;
-	font-weight: 900;
-	color: grey;
-	animation: anim 2s ease-in-out;
+  font-size: large;
+  font-weight: 900;
+  color: grey;
+  animation: anim 2s ease-in-out;
 }
 
 @keyframes anim {
-	0% {
-		transform: translate(0, 100%);
-	}
-	10% {
-		transform: translate(0, 0);
-	}
-	90% {
-		transform: translate(0, 0);
-	}
-	100% {
-		transform: translate(0, 100%);
-	}
+  0% {
+    transform: translate(0, 100%);
+  }
+  10% {
+    transform: translate(0, 0);
+  }
+  90% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0, 100%);
+  }
 }

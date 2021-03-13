@@ -1,11 +1,11 @@
 .Root {
-	padding-top: 72px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  padding-top: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .BtnContainer {
-	display: flex;
-	margin: 56px 0;
+  display: flex;
+  margin: 56px 0;
 }

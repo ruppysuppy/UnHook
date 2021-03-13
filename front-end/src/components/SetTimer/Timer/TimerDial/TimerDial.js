@@ -1,54 +1,83 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from "react";
+import { connect } from "react-redux";
 
-import * as actions from '../../../../store/actions/actions'
-import timeTypes from '../../../../constants/timeTypes'
+import * as actions from "../../../../store/actions/actions";
+import timeTypes from "../../../../constants/timeTypes";
 
-import Button from '../../../Button/Button'
+import Button from "../../../Button/Button";
 
-import styles from './timer-dial.module.css'
+import styles from "./timer-dial.module.css";
 
-function TimerDial({ timeType, time, increment, decrement, upperLimit, lowerLimit, boostAmt, addSlice, subtractSlice }) {
-    return (
-        <div className={styles.Root}>
-            <Button
-                onClick={() => addSlice(timeTypes[timeType], boostAmt, upperLimit, time[timeType])}
-                disabled={upperLimit <= time[timeType]}>
-                <i className={`fa fa-angle-double-up ${styles.Icon}`} aria-hidden="true" />
-            </Button>
-            <Button
-                onClick={() => increment(timeTypes[timeType])}
-                disabled={upperLimit <= time[timeType]}>
-                <i className={`fa fa-angle-up ${styles.Icon}`} aria-hidden="true" />
-            </Button>
-            {time[timeType]}
-            <Button
-                onClick={() => decrement(timeTypes[timeType])}
-                disabled={lowerLimit >= time[timeType]}>
-                <i className={`fa fa-angle-down ${styles.Icon}`} aria-hidden="true" />
-            </Button>
-            <Button
-                onClick={() => subtractSlice(timeTypes[timeType], boostAmt, lowerLimit, time[timeType])}
-                disabled={lowerLimit >= time[timeType]}>
-                <i className={`fa fa-angle-double-down ${styles.Icon}`} aria-hidden="true" />
-            </Button>
-        </div>
-    )
+function TimerDial({
+  timeType,
+  time,
+  increment,
+  decrement,
+  upperLimit,
+  lowerLimit,
+  boostAmt,
+  addSlice,
+  subtractSlice,
+}) {
+  return (
+    <div className={styles.Root}>
+      <Button
+        onClick={() =>
+          addSlice(timeTypes[timeType], boostAmt, upperLimit, time[timeType])
+        }
+        disabled={upperLimit <= time[timeType]}
+      >
+        <i
+          className={`fa fa-angle-double-up ${styles.Icon}`}
+          aria-hidden="true"
+        />
+      </Button>
+      <Button
+        onClick={() => increment(timeTypes[timeType])}
+        disabled={upperLimit <= time[timeType]}
+      >
+        <i className={`fa fa-angle-up ${styles.Icon}`} aria-hidden="true" />
+      </Button>
+      {time[timeType]}
+      <Button
+        onClick={() => decrement(timeTypes[timeType])}
+        disabled={lowerLimit >= time[timeType]}
+      >
+        <i className={`fa fa-angle-down ${styles.Icon}`} aria-hidden="true" />
+      </Button>
+      <Button
+        onClick={() =>
+          subtractSlice(
+            timeTypes[timeType],
+            boostAmt,
+            lowerLimit,
+            time[timeType]
+          )
+        }
+        disabled={lowerLimit >= time[timeType]}
+      >
+        <i
+          className={`fa fa-angle-double-down ${styles.Icon}`}
+          aria-hidden="true"
+        />
+      </Button>
+    </div>
+  );
 }
 
-const mapStateToProps = state => ({
-    time: state.timer
-})
+const mapStateToProps = (state) => ({
+  time: state.timer,
+});
 
-const mapDispatchToProps = dispatch => ({
-    increment: (timeType) => dispatch(actions.updateTime(1, timeType)),
-    decrement: (timeType) => dispatch(actions.updateTime(-1, timeType)),
-    addSlice: (timeType, amount, upperLimit, curr) => (
-        dispatch(actions.updateTime(Math.min(amount, upperLimit - curr), timeType))
+const mapDispatchToProps = (dispatch) => ({
+  increment: (timeType) => dispatch(actions.updateTime(1, timeType)),
+  decrement: (timeType) => dispatch(actions.updateTime(-1, timeType)),
+  addSlice: (timeType, amount, upperLimit, curr) =>
+    dispatch(actions.updateTime(Math.min(amount, upperLimit - curr), timeType)),
+  subtractSlice: (timeType, amount, lowerLimit, curr) =>
+    dispatch(
+      actions.updateTime(Math.max(-amount, lowerLimit - curr), timeType)
     ),
-    subtractSlice: (timeType, amount, lowerLimit, curr) => (
-        dispatch(actions.updateTime(Math.max(-amount, lowerLimit - curr), timeType))
-    ),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(TimerDial)
+export default connect(mapStateToProps, mapDispatchToProps)(TimerDial);

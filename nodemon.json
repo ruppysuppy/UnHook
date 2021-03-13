@@ -1,6 +1,4 @@
 {
-    "verbose": true,
-    "ignore": [
-        "unhookData/*"
-    ]
+  "verbose": true,
+  "ignore": ["unhookData/*"]
 }

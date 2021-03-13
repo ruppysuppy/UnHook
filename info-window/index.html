@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Info</title>
-		<link rel="stylesheet" href="./style.css" />
-	</head>
-	<body>
-		<div class="frame-top">
-			<img src="../assets/img/logo-white.png" alt="Logo" class="image" />
-			UnHook
-		</div>
-		<div class="body">
-			Use the app from the System Tray
-			<button id="btn-ok">OK</button>
-		</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="frame-top">
+      <img src="../assets/img/logo-white.png" alt="Logo" class="image" />
+      UnHook
+    </div>
+    <div class="body">
+      Use the app from the System Tray
+      <button id="btn-ok">OK</button>
+    </div>
 
-		<script>
-			const { ipcRenderer } = require("electron");
+    <script>
+      const { ipcRenderer } = require("electron");
 
-			const btnOK = document.getElementById("btn-ok");
+      const btnOK = document.getElementById("btn-ok");
 
-			btnOK.addEventListener("click", () => {
-				ipcRenderer.send("info:close", null);
-			});
-		</script>
-	</body>
+      btnOK.addEventListener("click", () => {
+        ipcRenderer.send("info:close", null);
+      });
+    </script>
+  </body>
 </html>

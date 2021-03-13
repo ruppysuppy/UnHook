@@ -1,11 +1,11 @@
 .Root {
-	display: flex;
-	width: 100%;
-	justify-content: space-evenly;
-	align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .Colon {
-	font-weight: 900;
-	font-size: xx-large;
+  font-weight: 900;
+  font-size: xx-large;
 }
