@@ -8,11 +8,9 @@
     "start": "electron .",
     "dev": "nodemon --exec npm run start --config nodemon.json",
     "start-front-end": "cd front-end && npm run start",
-    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/img/logo-black.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/img/logo-black.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"UnHook\"",
-    "package-linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/img/logo-black.png --prune=true --out=release-builds",
     "install-dependencies": "npm install && cd front-end && npm install",
-    "build-front-end": "cd front-end && npm run build"
+    "build-front-end": "cd front-end && npm run build",
+    "build-installer": "electron-builder"
   },
   "keywords": [
     "electron",
@@ -25,7 +23,52 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^10.1.3",
-    "electron-packager": "^15.1.0",
+    "electron-builder": "^22.9.1",
     "nodemon": "^2.0.4"
+  },
+  "build": {
+    "appId": "UnHook",
+    "directories": {
+      "output": "app-build"
+    },
+    "files": [
+      "**/*",
+      "!front-end/node_modules/",
+      "!front-end/public/",
+      "!front-end/src/",
+      "!front-end/.gitignore",
+      "!front-end/package.json",
+      "!front-end/package-lock.json",
+      "!package.json",
+      "!package-lock.json",
+      "!release-builds/"
+    ],
+    "win": {
+      "icon": "assets/img/logo-black.ico",
+      "target": [
+        "portable"
+      ]
+    },
+    "mac": {
+      "icon": "assets/img/logo-black.icns",
+      "target": [
+        "dmg"
+      ]
+    },
+    "linux": {
+      "icon": "assets/img/logo-black.png",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "icon": "assets/img/logo-black.ico",
+    "nsis": {
+      "installerIcon": "assets/img/logo-black.ico",
+      "uninstallerIcon": "assets/img/logo-black.ico",
+      "uninstallDisplayName": "UnHook",
+      "license": "./LICENSE",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
   }
 }
