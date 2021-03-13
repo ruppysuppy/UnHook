@@ -28,10 +28,6 @@ let tray = null
 
 const gotTheLock = app.requestSingleInstanceLock()
 
-if (!gotTheLock) {
-    app.quit()
-}
-
 function createMainWindow() {
     mainWindow = new MainWindow(
         path.join(__dirname, "assets", "img", "logo-white.png"),
@@ -64,6 +60,11 @@ function createInfoWindow() {
 }
 
 const initialize = () => {
+    if (!gotTheLock) {
+        app.quit()
+        return
+    }
+
     createMainWindow()
     createTray()
     !isDev && createInfoWindow()
