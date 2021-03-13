@@ -4,7 +4,7 @@
     <img src="./assets/img/logo-black.png" style="width: 200px" />
 </div>
 
-<div align="center">
+<!-- <div align="center">
     <a href="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red.svg">
         <img alt="Open Source Love" src="https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red.svg">
     </a>
@@ -17,7 +17,7 @@
     <a href="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
         <img alt="Code Style: Prittier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
     </a>
-</div>
+</div> -->
 
 <br><br>
 
@@ -37,7 +37,7 @@ The solution? Use UnHook, an app that helps you un-hook yourself from the screen
 
 1. Windows
 2. Linux
-3. Mac (iOS)
+3. MacOS
 
 ## Tools/Frameworks Used
 
@@ -58,7 +58,7 @@ The solution? Use UnHook, an app that helps you un-hook yourself from the screen
 
 1. Make sure that `process.env.NODE_ENV` is set to `PRODUCTION` in [main.js](./main.js)
 2. Use `npm run build-front-end` to package the react app
-3. Use `npm run package-<platform>` to package the app for the desired platform (win/linux/mac)
+3. Use `npm run build-app` to package the app for the current platform
 
 ## Note
 
