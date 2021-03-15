@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Roboto";
-  src: url("../front-end/public/fonts/Roboto-Regular.ttf") format("truetype");
+  src: url("../front-end/build/fonts/Roboto-Regular.ttf") format("truetype");
 }
 
 * {
@@ -27,6 +27,7 @@ body {
   left: 0;
   color: white;
   background-color: rgb(50, 50, 50);
+  user-select: none;
   -webkit-user-select: none;
   -webkit-app-region: drag;
 }
@@ -46,7 +47,7 @@ body {
 }
 
 #btn-ok {
-  background-color: transparent;
+  background-color: #eeeeee;
   border: none;
   outline: none !important;
   transition: 0.2s;

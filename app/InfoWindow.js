@@ -6,15 +6,17 @@ class InfoWindow extends BrowserWindow {
       height: 175,
       width: 300,
       frame: false,
-      resizable: false,
       hasShadow: true,
       icon: iconPath,
+      resizable: false,
+      show: false,
       webPreferences: {
         nodeIntegration: true,
       },
     });
 
     this.loadFile(filePath);
+    this.on("ready-to-show", this.show)
   }
 }
 

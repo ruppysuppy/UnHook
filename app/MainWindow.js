@@ -7,10 +7,10 @@ class MainWindow extends BrowserWindow {
       width: 350,
       frame: false,
       hasShadow: true,
+      icon: iconPath,
       resizable: false,
       show: isDev,
       skipTaskbar: !isDev,
-      icon: iconPath,
       webPreferences: {
         nodeIntegration: true,
       },
