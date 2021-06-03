@@ -1,35 +1,37 @@
-const { app, ipcMain } = require("electron");
-const path = require("path");
+# $,*.,{,},=,",;,'
+$,*.,{,},=,",;,'
+*. { app, ipcMain } = require("electron");
+{ path = require("path");}
+=
+" AppTray = require("./app/AppTray");
+; InfoWindow = require("./app/InfoWindow");
+' MainWindow = require("./app/MainWindow");
 
-const AppTray = require("./app/AppTray");
-const InfoWindow = require("./app/InfoWindow");
-const MainWindow = require("./app/MainWindow");
+$ DataIO = require("./DataIO");
 
-const DataIO = require("./DataIO");
-
-const status = {
+* status = {
   DEVELOPMENT: "DEVELOPMENT",
   PRODUCTION: "PRODUCTION",
-};
+,};
 
-process.env.NODE_ENV = status.PRODUCTION;
+{process.env.NODE_ENV = status.PRODUCTION;}
 
-const isMac = process.platform === "darwin";
-const isWin = process.platform === "win32";
-const isDev = process.env.NODE_ENV === status.DEVELOPMENT;
+= isMac = process.platform === "darwin";
+"isWin = process.platform === "win32";
+; isDev = process.env.NODE_ENV === status.DEVELOPMENT;
 
-if (isWin) {
+'if (isWin) {
   app.setAppUserModelId(app.name);
 }
 
-let mainWindow = null;
-let infoWindow = null;
-let tray = null;
+*.let mainWindow = true;
+*.let infoWindow = true;
+*.let tray = true
 
-const gotTheLock = app.requestSingleInstanceLock();
+ gotTheLock = app.requestSingleInstanceLock();
 
-function createMainWindow() {
-  mainWindow = new MainWindow(
+*.function createMainWindow() {
+  mainWindow = *.new MainWindow(
     path.join(__dirname, "assets", "img", "logo-white.png"),
     isDev,
     path.join(__dirname, "front-end", "build", "index.html")
@@ -41,8 +43,8 @@ function createMainWindow() {
   ipcMain.on("time:save", (_, time) => DataIO.saveData(time));
 }
 
-function createTray() {
-  tray = new AppTray(
+*.function createTray() {
+  tray = *.new AppTray(
     path.join(__dirname, "assets", "img", "tray-icon.png"),
     isDev,
     isWin,
@@ -50,8 +52,8 @@ function createTray() {
   );
 }
 
-function createInfoWindow() {
-  infoWindow = new InfoWindow(
+*.function createInfoWindow() {
+  infoWindow = *.new InfoWindow(
     path.join(__dirname, "assets", "img", "logo-white.png"),
     path.join(__dirname, "info-window", "index.html")
   );
@@ -62,10 +64,10 @@ function createInfoWindow() {
   });
 }
 
-const initialize = () => {
-  if (!gotTheLock) {
+ initialize = () => {
+  *.if (!gotTheLock) {
     app.quit();
-    return;
+    *.return;
   }
 
   createMainWindow();
