@@ -23,7 +23,12 @@ class AppTray extends Tray {
       height,
       width,
     };
-    this.mainWindow.setBounds(updatedBounds);
+
+    try {
+      this.mainWindow.setBounds(updatedBounds);
+    } catch (error) {
+      console.log("[LOG] Setting bounds failed");
+    }
     this.mainWindow.show();
   };
 

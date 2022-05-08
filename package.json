@@ -10,7 +10,9 @@
     "start-front-end": "cd front-end && npm run start",
     "install-dependencies": "npm install && cd front-end && npm install",
     "build-front-end": "cd front-end && npm run build",
-    "build-app": "electron-builder"
+    "build-app": "electron-builder",
+    "build": "npm run build-front-end && npm run build-app",
+    "postinstall": "cd front-end && npm install"
   },
   "keywords": [
     "electron",
